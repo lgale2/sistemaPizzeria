@@ -1,0 +1,51 @@
+<div class="container mt-5">
+    <div class="row">
+      <div class="col-lg-8 offset-lg-2">
+        <div class="card">
+          <div class="card-body text-center">
+            <span class="title">PRODUCTS</span>
+            <button
+              class="btn btn-success float-end"
+              routerLink="/product-create"
+            >
+             NEW
+            </button>
+            <table
+              *ngIf="listProducts.length > 0"
+              class="table table-striped mt-3"
+            >
+              <thead>
+                <tr>
+                  <th scope="col">CODE</th>
+                  <th scope="col">PRODUCT NAME</th>
+                  <th scope="col">PRICE</th>
+                  <th scope="col">UNIT</th>
+                  <th scope="col">TAX</th>
+                  <th scope="col">Accion</th>
+                </tr>
+              </thead>
+              <tbody class="table-group-divider">
+                <tr *ngFor="let prod of listProducts">
+                  <td>{{prod.Code}}</td>
+                  <td>{{ prod.Name }}</td>
+                  <td>{{ prod.Price }}</td>
+                  <td>{{ prod.Unit }}</td>
+                  <td>{{ prod.Tax }}</td>
+  
+                  <td colspan="2">
+                    <i [routerLink]="['/product-edit', prod.Code]"
+                      class="fa-solid fa-pen-to-square"
+                      style="color: #227c09"
+                    ></i>
+                    <i (click)="deleteProduct(prod.Code)" class="fa-solid fa-trash" style="color: #c70000"></i>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <h5 style="text-align: start; margin-top: 10px;" *ngIf="listProducts.length == 0">Not products</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

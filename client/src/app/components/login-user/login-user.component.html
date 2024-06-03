@@ -1,0 +1,110 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-lg-6 offset-lg-3">
+      <div class="card">
+        <div class="card-body text-center">
+          <span class="title">Login</span>
+          <form [formGroup]="loginForm" (ngSubmit)="loginUser()">
+            <div class="row">
+              <div class="mb-3">
+                <input
+                  type="text"
+                  class="form-control form-control-xl"
+                  placeholder="Username"
+                  formControlName="UserName"
+                />
+
+                <div
+                  class="text-danger"
+                  *ngIf="
+                    loginForm.get('UserName')?.hasError('required') &&
+                    loginForm.get('UserName')?.touched
+                  "
+                >
+                  <span>Username is <strong>required</strong></span>
+                </div>
+
+                <div
+                  class="text-danger"
+                  *ngIf="
+                    loginForm.get('UserName')?.hasError('minlength') &&
+                    loginForm.get('UserName')?.touched
+                  "
+                >
+                  <span>UserName must be at least 3 characters long</span>
+                </div>
+                <div
+                  class="text-danger"
+                  *ngIf="
+                    loginForm.get('UserName')?.hasError('maxlength') &&
+                    loginForm.get('UserName')?.touched
+                  "
+                >
+                  <span>UserName must be at most 100 characters long</span>
+                </div>
+              </div>
+              <div class="mb-3">
+                <input
+                  type="password"
+                  class="form-control form-control-xl"
+                  placeholder="Password"
+                  formControlName="Password"
+                />
+                <div
+                  class="text-danger"
+                  *ngIf="
+                    loginForm.get('Password')?.hasError('required') &&
+                    loginForm.get('Password')?.touched
+                  "
+                >
+                  <span>Password is <strong>required</strong></span>
+                </div>
+
+                <div
+                  class="text-danger"
+                  *ngIf="
+                    loginForm.get('Password')?.hasError('minlength') &&
+                    loginForm.get('Password')?.touched
+                  "
+                >
+                  <span>Password must be at least 3 characters long</span>
+                </div>
+                <div
+                  class="text-danger"
+                  *ngIf="
+                    loginForm.get('Password')?.hasError('maxlength') &&
+                    loginForm.get('Password')?.touched
+                  "
+                >
+                  <span>Password must be at most 100 characters long</span>
+                </div>
+              </div>
+            </div>
+            <div class="row justify-content-center">
+              <div class="col-md-4 mb-2 d-flex justify-content-between">
+                <button
+                  type="submit"
+                  class="btn btn-success btn-lg w-100"
+                  [disabled]="loginForm.invalid"
+                >
+                  Login User
+                </button>
+              </div>
+            </div>
+
+            <div class="row justify-content-center">
+              <div class="col-12 d-flex justify-content-center">
+                <a
+                  routerLink="/register"
+                  class="text-primary text-decoration-none"
+                >
+                  Don't have an account? Register your username at this link
+                </a>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

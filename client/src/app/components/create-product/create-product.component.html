@@ -1,0 +1,83 @@
+<div class="container mt-5">
+    <div class="row">
+      <div class="col-lg-6 offset-lg-3">
+        <div class="card">
+          <div class="card-body text-center">
+            <span class="title">{{ title | uppercase }}</span>
+            <form [formGroup]="productForm" (ngSubmit)="addProduct()">
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <input
+                    type="text"
+                    class="form-control form-control-xl"
+                    placeholder="Name Product"
+                    formControlName="Name"
+                  />
+                  <div class="text-danger" *ngIf="productForm.get('Name')?.hasError('required') && productForm.get('Name')?.touched">
+                    <span>Product name is <strong>required</strong></span>
+                  </div>
+                  <div class="text-danger" *ngIf="productForm.get('Name')?.hasError('minlength') && productForm.get('Name')?.touched">
+                    <span>Product name must be at least 3 characters long</span>
+                  </div>
+                  <div class="text-danger" *ngIf="productForm.get('Name')?.hasError('maxlength') && productForm.get('Name')?.touched">
+                    <span>Product name must be at most 100 characters long</span>
+                  </div>
+                </div>
+  
+                <div class="col-md-6 mb-3">
+                  <input
+                    type="number"
+                    class="form-control form-control-xl"
+                    placeholder="Price"
+                    formControlName="Price"
+                  />
+                  <div class="text-danger" *ngIf="productForm.get('Price')?.hasError('required') && productForm.get('Price')?.touched">
+                    <span>Price is <strong>required</strong></span>
+                  </div>
+                </div>
+              </div>
+  
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <input
+                    type="number"
+                    class="form-control form-control-xl"
+                    placeholder="Unit"
+                    formControlName="Unit"
+                  />
+                  <div class="text-danger" *ngIf="productForm.get('Unit')?.hasError('required') && productForm.get('Unit')?.touched">
+                    <span>Unit is <strong>required</strong></span>
+                  </div>
+                </div>
+  
+                <div class="col-md-6 mb-3">
+                  <input
+                    type="number"
+                    class="form-control form-control-xl"
+                    placeholder="Tax"
+                    formControlName="Tax"
+                  />
+                  <div class="text-danger" *ngIf="productForm.get('Tax')?.hasError('required') && productForm.get('Tax')?.touched">
+                    <span>Tax is <strong>required</strong></span>
+                  </div>
+
+                </div>
+              </div>
+  
+              <div class="row justify-content-center">
+                <div class="col-md-4 mb-2 d-flex justify-content-between">
+                  <button type="submit" class="btn btn-success" [disabled]="productForm.invalid">
+                    Save
+                  </button>
+                  <button routerLink="/" type="button" class="btn btn-danger">
+                    Exit
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
