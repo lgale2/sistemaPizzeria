@@ -1,0 +1,54 @@
+<div class="container mt-5">
+    <div class="row">
+      <div class="col-lg-6 offset-lg-3">
+        <div class="card">
+          <div class="card-body text-center">
+            <span class="title">{{ title | uppercase }}</span>
+            <form [formGroup]="addressForm" (ngSubmit)="addAddress()">
+              <div class="row">
+                <div class="form-group mb-3">
+                  <input
+                    type="text"
+                    class="form-control form-control-xl"
+                    placeholder="Address"
+                    formControlName="Address"
+                  />
+                  <div class="text-danger" *ngIf="addressForm.get('Address')?.hasError('required') && addressForm.get('Address')?.touched">
+                    <span>Address is <strong>required</strong></span>
+                  </div>
+                  <div class="text-danger" *ngIf="addressForm.get('Address')?.hasError('minlength') && addressForm.get('Address')?.touched">
+                    <span>Address must be at least 3 characters long</span>
+                  </div>
+                  <div class="text-danger" *ngIf="addressForm.get('Address')?.hasError('maxlength') && addressForm.get('Address')?.touched">
+                    <span>Address must be at most 100 characters long</span>
+                  </div>
+                </div>
+  
+                <div class="form-group mb-3">
+                  <select id="Client" formControlName="Client" class="form-select" aria-label="Default select example">
+                    <option value="" disabled selected>select a client</option>
+                    <option *ngFor="let client of clients" [value]="client.Code">{{ client.Name }}</option>
+                  </select>
+                </div>
+                
+              </div>
+  
+            
+  
+              <div class="row justify-content-center">
+                <div class="col-md-4 mb-2 d-flex justify-content-between">
+                  <button type="submit" class="btn btn-success" [disabled]="addressForm.invalid">
+                    Save
+                  </button>
+                  <button routerLink="/address" type="button" class="btn btn-danger">
+                    Exit
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

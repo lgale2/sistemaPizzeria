@@ -13,6 +13,10 @@ import { HttpInterceptorProviders } from './_helpers/http.interceptor';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavbarComponent } from './app/navbar/navbar.component';
+import { CreateClientComponent } from './components/client/create-client/create-client.component';
+import { ListClientComponent } from './components/client/list-client/list-client.component';
+import { ListAddressComponent } from './components/address/list-address/list-address.component';
+import { CreateAddressComponent } from './components/address/create-address/create-address.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +25,11 @@ import { NavbarComponent } from './app/navbar/navbar.component';
     LoginUserComponent,
     CreateProductComponent,
     ListProductComponent,
-    NavbarComponent
+    NavbarComponent,
+    CreateClientComponent,
+    ListClientComponent,
+    ListAddressComponent,
+    CreateAddressComponent
   ],
   imports: [
     BrowserModule,

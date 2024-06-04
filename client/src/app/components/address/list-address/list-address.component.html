@@ -1,0 +1,47 @@
+<div class="container mt-5">
+    <div class="row">
+      <div class="col-lg-8 offset-lg-2">
+        <div class="card">
+          <div class="card-body text-center">
+            <span class="title">ADDRESS</span>
+            <button
+              class="btn btn-success float-end"
+              routerLink="/address-create"
+            >
+             NEW
+            </button>
+            <table
+              *ngIf="listAddress.length > 0"
+              class="table table-striped mt-3"
+            >
+              <thead>
+                <tr>
+                  <th scope="col">CODE</th>
+                  <th scope="col">ADDRESS</th>
+                  <th scope="col">CLIENT</th>
+                  <th scope="col">Accion</th>
+                </tr>
+              </thead>
+              <tbody class="table-group-divider">
+                <tr *ngFor="let address of listAddress">
+                  <td>{{address.Code}}</td>
+                  <td>{{ address.Address }}</td>
+                  <td>{{ GetClientName(address.Client)}}</td>
+  
+                  <td colspan="2">
+                    <i [routerLink]="['/address-edit', address.Code]"
+                      class="fa-solid fa-pen-to-square"
+                      style="color: #227c09"
+                    ></i>
+                    <i (click)="deleteAddress(address.Code)" class="fa-solid fa-trash" style="color: #c70000"></i>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <h5 style="text-align: start; margin-top: 10px;" *ngIf="listAddress.length == 0">Not address</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,56 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-lg-6 offset-lg-3">
+      <div class="card">
+        <div class="card-body text-center">
+          <span class="title">{{ title | uppercase }}</span>
+          <form [formGroup]="clientForm" (ngSubmit)="addClient()">
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <input type="text" class="form-control form-control-xl" placeholder="Name" formControlName="Name" />
+                <div class="text-danger"
+                  *ngIf="clientForm.get('Name')?.hasError('required') && clientForm.get('Name')?.touched">
+                  <span>Name is <strong>required</strong></span>
+                </div>
+                <div class="text-danger"
+                  *ngIf="clientForm.get('Name')?.hasError('minlength') && clientForm.get('Name')?.touched">
+                  <span>Name must be at least 3 characters long</span>
+                </div>
+                <div class="text-danger"
+                  *ngIf="clientForm.get('Name')?.hasError('maxlength') && clientForm.get('Name')?.touched">
+                  <span>Name must be at most 100 characters long</span>
+                </div>
+              </div>
+
+              <div class="col-md-6 mb-3">
+                <input type="text" class="form-control form-control-xl" placeholder="Phone" formControlName="Phone" />
+                <div class="text-danger"
+                  *ngIf="clientForm.get('Phone')?.hasError('required') && clientForm.get('Phone')?.touched">
+                  <span>Phone is <strong>required</strong></span>
+                </div>
+                <div class="text-danger"
+                  *ngIf="clientForm.get('Phone')?.hasError('minlength') && clientForm.get('Phone')?.touched">
+                  <span>Phone must be at least 8 characters long</span>
+                </div>
+                <div class="text-danger"
+                  *ngIf="clientForm.get('Phone')?.hasError('maxlength') && clientForm.get('Phone')?.touched">
+                  <span>Phone must be at most 100 characters long</span>
+                </div>
+              </div>
+            </div>
+            <div class="row justify-content-center">
+              <div class="col-md-4 mb-2 d-flex justify-content-between">
+                <button type="submit" class="btn btn-success" [disabled]="clientForm.invalid">
+                  Save
+                </button>
+                <button routerLink="/client" type="button" class="btn btn-danger">
+                  Exit
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
